@@ -1,0 +1,46 @@
+{
+    "extends": [
+      "plugin:react/recommended",
+      "plugin:jest/recommended",
+      "plugin:@typescript-eslint/recommended",
+      "prettier"
+    ],
+    "env": {
+      "browser": true,
+      "jest/globals": true
+    },
+    "plugins": ["react", "jest", "@typescript-eslint", "prettier"],
+    "parserOptions": {
+      "ecmaFeatures": {
+        "classes": true,
+        "jsx": true
+      }
+    },
+    "parser": "@typescript-eslint/parser",
+    "rules": {
+      "no-return-assign": "off",
+      "no-async-promise-executor": "off",
+      "no-useless-catch": "off",
+      "no-misleading-character-class": "off",
+      "one-var": "off",
+      "curly": ["error", "multi-line", "consistent"],
+      "eqeqeq": "off",
+      "newline-before-return": "warn",
+      "newline-after-var": "warn",
+      "padded-blocks": ["warn", { "classes": "always" }],
+      "@typescript-eslint/explicit-function-return-type": "off",
+      "prettier/prettier": "error"
+    },
+    "globals": {
+      "Holmes": true,
+      "console": true,
+      "jQuery": true,
+      "Backbone": true,
+      "$": true,
+      "window": true,
+      "JST": true,
+      "require": true,
+      "Live": true
+    }
+  }
+  
