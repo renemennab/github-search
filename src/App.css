@@ -8,4 +8,13 @@
 
 body {
     font-family: Raleway;
+    width: 100vw;
+    height: 100vh;
+
+  
+}
+
+#root{
+    width: inherit;
+    height: inherit;  
 }
