@@ -3,6 +3,14 @@ import styled from 'styled-components'
 import SearchIcon from './searchIcon'
 
 export default function Search(props: any) {
+    fetch('https://api.github.com/users/renemennab')
+        .then(response => {
+            return response.json()
+        })
+        .then(myJson => {
+            console.log(myJson)
+        })
+
     return (
         <SearchStyles id="search">
             <form action="#">
@@ -22,7 +30,7 @@ const SearchStyles = styled.div`
 
 
     form {
-        width: 80%;
+        width: 100%;
         height: 50px;
         display: flex;
         justify-content: center;
