@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import SearchIcon from './searchIcon'
 import { useParams } from 'react-router-dom'
@@ -6,25 +6,44 @@ type serachPropTypes = {
     route: 'home' | 'results'
 }
 export default function Search(props: any) {
-    fetch('https://api.github.com/users/renemennab')
-        .then(response => {
-            return response.json()
-        })
-        .then(myJson => {
-            console.log(myJson)
-        })
+    const [SearchString, setSearchString] = useState('')
+
+    function onSubmitForm(event: any) {
+        event.preventDefault()
+        fetch(`https://api.github.com/users/${SearchString}`)
+            .then(response => {
+                return response.json()
+            })
+            .then(myJson => {
+                console.log(myJson)
+            })
+        fetch(`https://api.github.com/users/${SearchString}/repos`)
+            .then(response => {
+                return response.json()
+            })
+            .then(myJson => {
+                console.log(myJson)
+            })
+    }
 
     const currentPath = props.location.pathname.replace('/', '')
 
     console.warn(props)
+    console.log(SearchString)
 
     return (
         <SearchStyles id="search" className={currentPath}>
             <div id="title">
                 <strong>Github</strong> Search
             </div>
-            <form action="#">
-                <input type="text" id="searchText" name="search" />
+            <form onSubmit={event => onSubmitForm(event)}>
+                <input
+                    type="text"
+                    id="searchText"
+                    name="search"
+                    value={SearchString}
+                    onChange={event => setSearchString(event.target.value)}
+                />
 
                 <button id={'submitBtn'} type="submit">
                     <SearchIcon />
