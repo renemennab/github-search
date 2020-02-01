@@ -11,9 +11,13 @@ export default function Title(props: any) {
 const TitleStyles = styled.span`
     font-style: italic;
     font-weight: 200;
+    font-size: 40px;
+
     strong {
-    font-style: normal;
+        font-style: normal;
         font-family: Monaco;
         font-weight: 400;
     }
+    @media screen and (max-width: 600px) {
+        font-size: 35px;
 `
