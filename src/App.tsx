@@ -10,8 +10,8 @@ const App: React.FC = () => {
       <BrowserRouter>
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/Result" exact component={Result} />
-          <Route path="/NotFounds" exact component={NotFound} />
+          <Route path="/result" exact component={Result} />
+          <Route path="/notFounds" exact component={NotFound} />
           <Route path="/" render={() => <div>404</div>} />
         </Switch>
       </BrowserRouter>
