@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import SearchIcon from './searchIcon'
 import { useParams } from 'react-router-dom'
 type serachPropTypes = {
-    route: 'home' | 'results';
+    route: 'home' | 'results'
 }
 export default function Search(props: any) {
     fetch('https://api.github.com/users/renemennab')
@@ -46,7 +46,7 @@ const SearchStyles = styled.div`
         font-weight: 200;
         font-size: 60px;
         margin-bottom: 10px;
-
+        white-space: nowrap;
         strong {
             font-style: normal;
             font-family: Monaco;
@@ -84,20 +84,28 @@ const SearchStyles = styled.div`
         }
     }
     &.result {
+        flex-direction: row;
+
         form {
             width: 100%;
         }
         #title {
             font-size: 40px;
-            margin-bottom: 0px;
+            margin-right: 70px;
         }
     }
     @media screen and (max-width: 600px) {
-        #title {
-            font-size: 35px;
-            svg {
-                width: 25px;
+        &.result {
+            flex-direction: column;
+            #title {
+                margin-right: 0px;
+
+                font-size: 35px;
             }
+        }
+
+        svg {
+            width: 25px;
         }
     }
 `
