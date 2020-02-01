@@ -5,10 +5,11 @@ import Search from './Search'
 import { Result } from './Result'
 
 const App: React.FC = () => {
+
     return (
         <BrowserRouter>
             <Switch>
-                <Route path="/" render={(props: any) => <Search />} />
+                <Route path="/" render={(props: any) => <Search {...props}  />} />
                 <Route path="/result" exact render={(props: any) => <Result />} />
             </Switch>
         </BrowserRouter>

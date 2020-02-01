@@ -25,17 +25,11 @@ const ResultStyles = styled.div`
     display: grid;
     grid-template-columns: 280px auto;
     grid-template-rows: 50px auto;
-    grid-template-areas: 'ResultTitle search search search' 'profile repositories repositories repositories' 'profile repositories repositories repositories';
+    grid-template-areas: 'search search search search' 'profile repositories repositories repositories' 'profile repositories repositories repositories';
     grid-gap: 53px 75px;
-    .ResultTitle {
-        grid-area: ResultTitle;
-    }
 
     .search {
         grid-area: search;
-        #search {
-            width: 100%;
-        }
     }
 
     .profile {
@@ -50,12 +44,8 @@ const ResultStyles = styled.div`
         width: 100vw;
         display: grid;
         grid-template-columns: auto;
-        grid-template-rows: 70px 1fr 1fr 1fr;
-        grid-template-areas: 'ResultTitle ResultTitle ResultTitle ResultTitle' 'search search search search' 'profile profile profile profile' 'repositories repositories repositories repositories';
-
-        .ResultTitle {
-            grid-area: ResultTitle;
-        }
+        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-areas: 'search search search search' 'profile profile profile profile' 'repositories repositories repositories repositories';
 
         .search {
             grid-area: search;
