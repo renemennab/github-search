@@ -1,14 +1,10 @@
 import React from 'react'
-import Title from './Title'
 import Search from './Search'
 import styled from 'styled-components'
 
 export function Result(props: any) {
     return (
         <ResultStyles>
-            <div className="ResultTitle">
-                <Title />
-            </div>
             <div className="search">
                 <Search />
             </div>
@@ -21,7 +17,6 @@ export function Result(props: any) {
 const ResultStyles = styled.div`
     width: 100%;
     height: 100%;
-    padding: 35px;
     display: grid;
     grid-template-columns: 280px auto;
     grid-template-rows: 50px auto;

@@ -6,19 +6,22 @@
   src: url("https://github.com/todylu/monaco.ttf/blob/master/monaco.ttf");
 }
 
-body {
-    font-family: Raleway;
-    width: 100vw;
-    height: 100vh;
-
-  
-}
 
 * {
     box-sizing: border-box;
  }
 
+body {
+    font-family: Raleway;
+    width: 100vw;
+    height: 100vh;
+    padding: 35px;
+
+  
+}
+
+
 #root{
-    width: inherit;
-    height: inherit;  
+    width: 100%;
+    height: 100%;  
 }
