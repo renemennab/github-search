@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import SearchIcon from './icons/Search-Icon'
+import { colors } from './constants'
 
 export default function Search(props: any) {
     const [SearchString, setSearchString] = useState('')
@@ -60,6 +61,7 @@ const SearchStyles = styled.div`
         border-radius: 2px;
         box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.18);
         border: none;
+        border: 1px solid rgba(92, 92, 92, 0.4);
     }
     #submitBtn {
         max-width: 100px;
@@ -89,6 +91,9 @@ const SearchStyles = styled.div`
     @media screen and (max-width: 600px) {
         #title {
             font-size: 40px;
+        }
+        form {
+            width: 100%;
         }
         &.result {
             height: unset;
