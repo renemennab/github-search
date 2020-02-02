@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import SearchIcon from './searchIcon'
+import SearchIcon from './icons/Search-Icon'
 
 export default function Search(props: any) {
     const [SearchString, setSearchString] = useState('')
@@ -76,7 +76,6 @@ const SearchStyles = styled.div`
             width: 35px;
             path {
                 fill: white;
-                transform: scale(-1, 1) translateX(-100%);
             }
         }
     }
