@@ -119,7 +119,7 @@ const ResultStyles = styled.div`
         font-size: 20px;
         max-width: 280px;
         &__image {
-            width: 100%;
+            width: 280px;
             img {
                 width: 100%;
                 height: 100%;
@@ -178,6 +178,9 @@ const ResultStyles = styled.div`
         .profile {
             width: 100%;
             margin-bottom: 30px;
+            &__image {
+                width: 100%;
+            }
         }
 
         .repositories {
