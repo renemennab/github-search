@@ -17,6 +17,16 @@ export function Result(props: any) {
 
         return addSpaces
     }
+    function sortReposByStars(a: any, b: any) {
+        if (a.stargazers_count < b.stargazers_count) {
+            return 1
+        }
+        if (a.stargazers_count > b.stargazers_count) {
+            return -1
+        }
+
+        return 0
+    }
 
     return (
         <ResultStyles>
@@ -54,7 +64,7 @@ export function Result(props: any) {
                 </div>
             </div>
             <div className="repositories">
-                {props.repo.map((repository: any, index: number) => {
+                {props.repo.sort(sortReposByStars).map((repository: any, index: number) => {
                     return (
                         <div key={repository.name + index} className="repositories__repository">
                             <h1 className="repositories__repository--name">{treatReposNames(repository.name)}</h1>
