@@ -1,56 +1,106 @@
 import React from 'react'
-import Search from './Search'
 import styled from 'styled-components'
+import StarIcon from './icons/star-icon'
+import CompanyIcon from './icons/company-icon'
+import LocationIcon from './icons/location-icon'
+import FollowersIcon from './icons/followers-icon'
+import RepositorieIcon from './icons/repositorie-icon'
+import MailIcon from './icons/mail-icon'
 
 export function Result(props: any) {
-    
+    const placeholder = '--'
+
     return (
         <ResultStyles>
-
-            <div className="profile"></div>
+            <div className="profile">
+                <div className="profile__image">
+                    <img src={props.profile.avatar_url} alt="Italian Trulli" />
+                </div>
+                <div className="profile__name">{props.profile.name || placeholder}</div>
+                <div className="profile__login">{props.profile.login || placeholder}</div>
+                <div className="profile__bio">{props.profile.bio || placeholder}</div>
+                <div className="profile__company">
+                    <CompanyIcon />
+                    {props.profile.company || placeholder}
+                </div>
+                <div className="profile__location">
+                    <LocationIcon />
+                    {props.profile.location || placeholder}
+                </div>
+                <div className="profile__email">
+                    <MailIcon />
+                    {props.profile.email || placeholder}
+                </div>
+                <div className="profile__following">
+                    <StarIcon />
+                    {props.profile.following || placeholder}
+                </div>
+                <div className="profile__repos">
+                    <RepositorieIcon /> {props.repo.length}
+                </div>
+                <div className="profile__followers">
+                    <FollowersIcon />
+                    {props.profile.followers || placeholder}
+                </div>
+            </div>
             <div className="repositories"></div>
         </ResultStyles>
     )
 }
 
 const ResultStyles = styled.div`
+    margin-top: 50px;
     width: 100%;
     height: 100%;
     display: grid;
-    grid-template-columns: 280px auto;
-    grid-template-rows: 50px auto;
-    grid-template-areas: 'search search search search' 'profile repositories repositories repositories' 'profile repositories repositories repositories';
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: auto;
+    grid-template-areas: 'profile repositories ';
     grid-gap: 53px 75px;
-
-    .search {
-        grid-area: search;
+    svg {
+        margin-right: 7px;
     }
 
     .profile {
         grid-area: profile;
+        display: flex;
+        flex-direction: column;
+        font-size: 20px;
+
+        &__image {
+            width: 280px;
+            height: 280px;
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+        &__name {
+            font-size: 35px;
+            margin-top: 12px;
+        }
+        &__login {
+        }
+        &__bio {
+            margin-top: 7px;
+            margin-bottom: 33px;
+        }
     }
 
     .repositories {
         grid-area: repositories;
+        display: flex;
+        flex-direction: column;
     }
 
     @media screen and (max-width: 600px) {
         width: 100vw;
-        display: grid;
-        grid-template-columns: auto;
-        grid-template-rows: 1fr 1fr 1fr;
-        grid-template-areas: 'search search search search' 'profile profile profile profile' 'repositories repositories repositories repositories';
-
-        .search {
-            grid-area: search;
-        }
+        display: flex;
 
         .profile {
-            grid-area: profile;
         }
 
         .repositories {
-            grid-area: repositories;
         }
     }
 `
