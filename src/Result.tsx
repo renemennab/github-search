@@ -3,11 +3,10 @@ import Search from './Search'
 import styled from 'styled-components'
 
 export function Result(props: any) {
+    
     return (
         <ResultStyles>
-            <div className="search">
-                <Search />
-            </div>
+
             <div className="profile"></div>
             <div className="repositories"></div>
         </ResultStyles>
