@@ -27,8 +27,8 @@ export function Result(props: any) {
      * this function is used by the sort array method.
      * it actually orders the array putting the smaller first,
      * but because of the way react renders them, the larger renders at the top.
-     * @param a 
-     * @param b 
+     * @param a
+     * @param b
      */
     function sortReposByStars(a: any, b: any) {
         if (a.stargazers_count < b.stargazers_count) {
@@ -80,7 +80,9 @@ export function Result(props: any) {
                 {props.repo.sort(sortReposByStars).map((repository: any, index: number) => {
                     return (
                         <div key={repository.name + index} className="repositories__repository">
-                            <h1 className="repositories__repository--name">{treatReposNames(repository.name)}</h1>
+                            <a href={repository.html_url} className="repositories__repository--name">
+                                {treatReposNames(repository.name)}
+                            </a>
                             <h2 className="repositories__repository--discription">
                                 {repository.discription || placeholder}
                             </h2>
@@ -107,6 +109,7 @@ const ResultStyles = styled.div`
     grid-gap: 53px 75px;
     svg {
         margin-right: 7px;
+        height: 24px;
     }
 
     .profile {
@@ -114,9 +117,9 @@ const ResultStyles = styled.div`
         display: flex;
         flex-direction: column;
         font-size: 20px;
+        max-width: 280px;
         &__image {
-            width: 280px;
-            height: 280px;
+            width: 100%;
             img {
                 width: 100%;
                 height: 100%;
@@ -153,6 +156,7 @@ const ResultStyles = styled.div`
                 color: ${colors.purple};
                 font-size: 35px;
                 font-weight: normal;
+                text-decoration: none;
             }
             &--discription {
                 margin: 0px;
@@ -167,13 +171,18 @@ const ResultStyles = styled.div`
     }
 
     @media screen and (max-width: 600px) {
-        width: 100vw;
+        width: 100%;
         display: flex;
+        flex-wrap: wrap;
 
         .profile {
+            width: 100%;
+            margin-bottom: 30px;
         }
 
         .repositories {
+            width: 100%;
+            max-width: 280px;
         }
     }
 `
