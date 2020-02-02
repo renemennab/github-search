@@ -6,6 +6,7 @@ import LocationIcon from './icons/location-icon'
 import FollowersIcon from './icons/followers-icon'
 import RepositorieIcon from './icons/repositorie-icon'
 import MailIcon from './icons/mail-icon'
+import { colors } from './constants'
 
 export function Result(props: any) {
     const placeholder = '--'
@@ -34,18 +35,33 @@ export function Result(props: any) {
                     </div>
                     <div className="profile__icons--following">
                         <StarIcon />
-                        {props.profile.following || placeholder}
+                        {props.profile.following}
                     </div>
                     <div className="profile__icons--repos">
                         <RepositorieIcon /> {props.repo.length}
                     </div>
                     <div className="profile__icons--followers">
                         <FollowersIcon />
-                        {props.profile.followers || placeholder}
+                        {props.profile.followers}
                     </div>
                 </div>
             </div>
-            <div className="repositories"></div>
+            <div className="repositories">
+                {props.repo.map((repository: any, index: number) => {
+                    return (
+                        <div key={repository.name + index} className="repositories__repository">
+                            <h1 className="repositories__repository--name">{repository.name}</h1>
+                            <h2 className="repositories__repository--discription">
+                                {repository.discription || placeholder}
+                            </h2>
+                            <span className="repositories__repository--stars">
+                                <StarIcon />
+                                {repository.stargazers_count}
+                            </span>
+                        </div>
+                    )
+                })}
+            </div>
         </ResultStyles>
     )
 }
@@ -97,6 +113,27 @@ const ResultStyles = styled.div`
         grid-area: repositories;
         display: flex;
         flex-direction: column;
+
+        &__repository {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 30px;
+            &--name {
+                margin: 0px;
+                color: ${colors.purple};
+                font-size: 35px;
+                font-weight: normal;
+            }
+            &--discription {
+                margin: 0px;
+                font-weight: normal;
+                font-size: 20px;
+            }
+            &--stars {
+                display:flex;
+                font-size: 20px;
+            }
+        }
     }
 
     @media screen and (max-width: 600px) {

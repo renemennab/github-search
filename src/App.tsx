@@ -13,6 +13,7 @@ const App: React.FC = () => {
     function handleSubmitForm(event: any, SearchString: string, props: any) {
         event.preventDefault()
         props.history.push('/result')
+        setUserFound(false)
         try {
             Promise.all([
                 fetch(`https://api.github.com/users/${SearchString}`).then(function(response) {
