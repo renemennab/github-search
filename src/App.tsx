@@ -3,9 +3,11 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import './App.css'
 import Search from './Search'
 import { Result } from './Result'
+import { NotFound } from './NotFound'
 
 const App: React.FC = () => {
     const [RequestResponse, setRequestResponse] = useState({ profile: {}, repo: {} })
+    const [UserFound, setUserFound] = useState(false)
 
     console.log(RequestResponse)
     function handleSubmitForm(event: any, SearchString: string, props: any) {
@@ -27,9 +29,11 @@ const App: React.FC = () => {
                 })
                 .then(function(data) {
                     setRequestResponse({ profile: data[0], repo: data[1] })
+                    setUserFound(true)
                 })
         } catch (err) {
             console.error(err)
+            setUserFound(false)
         }
     }
 
@@ -43,7 +47,11 @@ const App: React.FC = () => {
                         return (
                             <>
                                 <Search {...props} submitHandler={handleSubmitForm} />
-                                <Result profile={RequestResponse.profile} repo={RequestResponse.repo} />
+                                {UserFound ? (
+                                    <Result profile={RequestResponse.profile} repo={RequestResponse.repo} />
+                                ) : (
+                                    <NotFound />
+                                )}
                             </>
                         )
                     }}
