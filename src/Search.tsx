@@ -12,7 +12,7 @@ export default function Search(props: any) {
             <div id="title">
                 <strong>Github</strong> Search
             </div>
-            <form onSubmit={event => props.submitHandler(event, SearchString)}>
+            <form onSubmit={event => props.submitHandler(event, SearchString, props)}>
                 <input
                     type="text"
                     id="searchText"
@@ -35,7 +35,9 @@ const SearchStyles = styled.div`
     justify-content: center;
     align-items: center;
     flex-direction: column;
-
+    &.result {
+        height: 50px;
+    }
     #title {
         font-style: italic;
         font-weight: 200;

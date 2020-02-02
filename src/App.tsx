@@ -8,8 +8,9 @@ const App: React.FC = () => {
     const [RequestResponse, setRequestResponse] = useState({ profile: {}, repo: {} })
 
     console.log(RequestResponse)
-    function handleSubmitForm(event: any, SearchString: string) {
+    function handleSubmitForm(event: any, SearchString: string, props: any) {
         event.preventDefault()
+        props.history.push('/result')
         try {
             Promise.all([
                 fetch(`https://api.github.com/users/${SearchString}`).then(function(response) {
@@ -35,11 +36,17 @@ const App: React.FC = () => {
     return (
         <BrowserRouter>
             <Switch>
-                <Route path="/" render={(props: any) => <Search {...props} submitHandler={handleSubmitForm} />} />
+                <Route path="/" exact render={(props: any) => <Search {...props} submitHandler={handleSubmitForm} />} />
                 <Route
                     path="/result"
-                    exact
-                    render={(props: any) => <Result profile={RequestResponse.profile} repo={RequestResponse.repo} />}
+                    render={(props: any) => {
+                        return (
+                            <>
+                                <Search {...props} submitHandler={handleSubmitForm} />
+                                <Result profile={RequestResponse.profile} repo={RequestResponse.repo} />
+                            </>
+                        )
+                    }}
                 />
             </Switch>
         </BrowserRouter>
