@@ -19,28 +19,30 @@ export function Result(props: any) {
                 <div className="profile__name">{props.profile.name || placeholder}</div>
                 <div className="profile__login">{props.profile.login || placeholder}</div>
                 <div className="profile__bio">{props.profile.bio || placeholder}</div>
-                <div className="profile__company">
-                    <CompanyIcon />
-                    {props.profile.company || placeholder}
-                </div>
-                <div className="profile__location">
-                    <LocationIcon />
-                    {props.profile.location || placeholder}
-                </div>
-                <div className="profile__email">
-                    <MailIcon />
-                    {props.profile.email || placeholder}
-                </div>
-                <div className="profile__following">
-                    <StarIcon />
-                    {props.profile.following || placeholder}
-                </div>
-                <div className="profile__repos">
-                    <RepositorieIcon /> {props.repo.length}
-                </div>
-                <div className="profile__followers">
-                    <FollowersIcon />
-                    {props.profile.followers || placeholder}
+                <div className="profile__icons">
+                    <div className="profile__icons--company">
+                        <CompanyIcon />
+                        {props.profile.company || placeholder}
+                    </div>
+                    <div className="profile__icons--location">
+                        <LocationIcon />
+                        {props.profile.location || placeholder}
+                    </div>
+                    <div className="profile__icons--email">
+                        <MailIcon />
+                        {props.profile.email || placeholder}
+                    </div>
+                    <div className="profile__icons--following">
+                        <StarIcon />
+                        {props.profile.following || placeholder}
+                    </div>
+                    <div className="profile__icons--repos">
+                        <RepositorieIcon /> {props.repo.length}
+                    </div>
+                    <div className="profile__icons--followers">
+                        <FollowersIcon />
+                        {props.profile.followers || placeholder}
+                    </div>
                 </div>
             </div>
             <div className="repositories"></div>
@@ -66,7 +68,6 @@ const ResultStyles = styled.div`
         display: flex;
         flex-direction: column;
         font-size: 20px;
-
         &__image {
             width: 280px;
             height: 280px;
@@ -79,11 +80,16 @@ const ResultStyles = styled.div`
             font-size: 35px;
             margin-top: 12px;
         }
-        &__login {
-        }
+
         &__bio {
             margin-top: 7px;
             margin-bottom: 33px;
+        }
+        &__icons {
+            > div {
+                display: flex;
+                margin-bottom: 7px;
+            }
         }
     }
 
