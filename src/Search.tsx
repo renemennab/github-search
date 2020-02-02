@@ -35,15 +35,13 @@ const SearchStyles = styled.div`
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    &.result {
-        height: 50px;
-    }
     #title {
         font-style: italic;
         font-weight: 200;
         font-size: 60px;
         margin-bottom: 10px;
         white-space: nowrap;
+
         strong {
             font-style: normal;
             font-family: Monaco;
@@ -56,9 +54,6 @@ const SearchStyles = styled.div`
         height: 50px;
         display: flex;
         justify-content: center;
-        &.result {
-            width: 100%;
-        }
     }
     #searchText {
         width: 90%;
@@ -80,6 +75,7 @@ const SearchStyles = styled.div`
         }
     }
     &.result {
+        height: 50px;
         flex-direction: row;
 
         form {
