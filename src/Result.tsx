@@ -11,12 +11,25 @@ import { colors } from './constants'
 export function Result(props: any) {
     const placeholder = '--'
 
+    /**
+     * this function is necessary to remove '-' characters and add spaces between the words.
+     * it also makes the first letter capitalized
+     * @param name
+     */
     function treatReposNames(name: string) {
         const capitalFirstLetter = name.charAt(0).toUpperCase() + name.substring(1)
         const addSpaces = capitalFirstLetter.replace(/-/g, ' ')
 
         return addSpaces
     }
+
+    /**
+     * this function is used by the sort array method.
+     * it actually orders the array putting the smaller first,
+     * but because of the way react renders them, the larger renders at the top.
+     * @param a 
+     * @param b 
+     */
     function sortReposByStars(a: any, b: any) {
         if (a.stargazers_count < b.stargazers_count) {
             return 1

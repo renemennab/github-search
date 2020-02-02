@@ -12,9 +12,19 @@ const App: React.FC = () => {
     const [UseLoader, setUseLoader] = useState(false)
 
     console.log(RequestResponse)
+    /**
+     * this function is called every time the user submits the form. 
+     * it is responsable for making the requests and change the state accordingly
+     * @param event 
+     * @param SearchString 
+     * @param props 
+     */
     function handleSubmitForm(event: any, SearchString: string, props: any) {
+        // this is necessary to avoid the page from reloading
         event.preventDefault()
+        // here i redirect the user to the result page right after the submit
         props.history.push('/result')
+        // activate the loader
         setUseLoader(true)
         setUserFound(false)
         try {
@@ -33,7 +43,9 @@ const App: React.FC = () => {
                 })
                 .then(function(data) {
                     setRequestResponse({ profile: data[0], repo: data[1] })
+                    // here i check if the response arrived but with no data
                     setUserFound(data[0].message != 'Not Found')
+                    // deactivate loader
                     setUseLoader(false)
                 })
         } catch (err) {
@@ -42,6 +54,10 @@ const App: React.FC = () => {
             setUseLoader(false)
         }
     }
+
+    /**
+     * this function tests if the the result page should render the loader, the results or the not found message
+     */
     function getResultOutput() {
         {
             if (UseLoader) {

@@ -2,6 +2,12 @@ import React from 'react'
 import styled from 'styled-components'
 import { colors } from './constants'
 
+/**
+ * the loader uses only css. 
+ * each one of those divs holds a absolutelly placed element.
+ * they each spin in a way that creates the loader illusion.
+ * @param props 
+ */
 export function Loader(props: any) {
     return (
         <LoaderStyles>
@@ -32,7 +38,7 @@ const LoaderStyles = styled.div`
         left: 50%;
         top: 30vh;
         transform: translate(-50%, -50%);
-        transform-origin: 
+        transform-origin: ;
     }
     div:nth-child(1) {
         animation-delay: -0.45s;
@@ -45,12 +51,10 @@ const LoaderStyles = styled.div`
     }
     @keyframes rotate {
         0% {
-            transform: translate(-50%, -50%) rotate(0deg) ;
+            transform: translate(-50%, -50%) rotate(0deg);
         }
         100% {
-            transform: translate(-50%, -50%)  rotate(360deg) ;
+            transform: translate(-50%, -50%) rotate(360deg);
         }
     }
 `
-// transform-origin: center;
-// transform-box: fill-box;
