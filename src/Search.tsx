@@ -87,6 +87,9 @@ const SearchStyles = styled.div`
         }
     }
     @media screen and (max-width: 600px) {
+        #title {
+            font-size: 40px;
+        }
         &.result {
             height: unset;
             flex-direction: column;
