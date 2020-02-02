@@ -7,23 +7,22 @@ type serachPropTypes = {
 }
 export default function Search(props: any) {
     const [SearchString, setSearchString] = useState('')
+    const [RequestProfileResponse, setRequestProfileResponse] = useState({})
+    const [RequestReposResponse, setRequestReposResponse] = useState({})
 
     function onSubmitForm(event: any) {
         event.preventDefault()
-        fetch(`https://api.github.com/users/${SearchString}`)
-            .then(response => {
-                return response.json()
+        try {
+            Promise.all([
+                fetch(`https://api.github.com/users/${SearchString}`),
+                fetch(`https://api.github.com/users/${SearchString}/repos`)
+            ]).then(([profile, repo]) => {
+                setRequestProfileResponse(profile.json())
+                setRequestReposResponse(repo.json())
             })
-            .then(myJson => {
-                console.log(myJson)
-            })
-        fetch(`https://api.github.com/users/${SearchString}/repos`)
-            .then(response => {
-                return response.json()
-            })
-            .then(myJson => {
-                console.log(myJson)
-            })
+        } catch (err) {
+            console.error(err)
+        }
     }
 
     const currentPath = props.location.pathname.replace('/', '')
