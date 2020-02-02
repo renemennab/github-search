@@ -1,41 +1,18 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import SearchIcon from './searchIcon'
-import { useParams } from 'react-router-dom'
-type serachPropTypes = {
-    route: 'home' | 'results'
-}
+
 export default function Search(props: any) {
     const [SearchString, setSearchString] = useState('')
-    const [RequestProfileResponse, setRequestProfileResponse] = useState({})
-    const [RequestReposResponse, setRequestReposResponse] = useState({})
-
-    function onSubmitForm(event: any) {
-        event.preventDefault()
-        try {
-            Promise.all([
-                fetch(`https://api.github.com/users/${SearchString}`),
-                fetch(`https://api.github.com/users/${SearchString}/repos`)
-            ]).then(([profile, repo]) => {
-                setRequestProfileResponse(profile.json())
-                setRequestReposResponse(repo.json())
-            })
-        } catch (err) {
-            console.error(err)
-        }
-    }
 
     const currentPath = props.location.pathname.replace('/', '')
-
-    console.warn(props)
-    console.log(SearchString)
 
     return (
         <SearchStyles id="search" className={currentPath}>
             <div id="title">
                 <strong>Github</strong> Search
             </div>
-            <form onSubmit={event => onSubmitForm(event)}>
+            <form onSubmit={event => props.submitHandler(event, SearchString)}>
                 <input
                     type="text"
                     id="searchText"
