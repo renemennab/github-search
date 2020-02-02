@@ -93,6 +93,7 @@ const SearchStyles = styled.div`
     }
     @media screen and (max-width: 600px) {
         &.result {
+            height: unset;
             flex-direction: column;
             #title {
                 margin-right: 0px;
