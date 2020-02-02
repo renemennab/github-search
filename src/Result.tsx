@@ -11,6 +11,13 @@ import { colors } from './constants'
 export function Result(props: any) {
     const placeholder = '--'
 
+    function treatReposNames(name: string) {
+        const capitalFirstLetter = name.charAt(0).toUpperCase() + name.substring(1)
+        const addSpaces = capitalFirstLetter.replace(/-/g, ' ')
+
+        return addSpaces
+    }
+
     return (
         <ResultStyles>
             <div className="profile">
@@ -50,7 +57,7 @@ export function Result(props: any) {
                 {props.repo.map((repository: any, index: number) => {
                     return (
                         <div key={repository.name + index} className="repositories__repository">
-                            <h1 className="repositories__repository--name">{repository.name}</h1>
+                            <h1 className="repositories__repository--name">{treatReposNames(repository.name)}</h1>
                             <h2 className="repositories__repository--discription">
                                 {repository.discription || placeholder}
                             </h2>
@@ -130,7 +137,7 @@ const ResultStyles = styled.div`
                 font-size: 20px;
             }
             &--stars {
-                display:flex;
+                display: flex;
                 font-size: 20px;
             }
         }
