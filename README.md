@@ -1,4 +1,10 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+In this project, my main goal was to show my abillities with front end.
+
+I tried to use different aproaches to show my skills. In an actual project i might use a more focused strategy.
+
+I'm not very experienced with testing, i usually try to make my code as clean and straightforward as i can. I am obssessed whith code organization and optimization.
+
+As i didn't deliver tests, i decided to focus on adding more features like the loader, and the mobile view. 
 
 ## Available Scripts
 
@@ -66,3 +72,5 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `yarn build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
