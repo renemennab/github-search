@@ -13,11 +13,11 @@ const App: React.FC = () => {
 
     console.log(RequestResponse)
     /**
-     * this function is called every time the user submits the form. 
+     * this function is called every time the user submits the form.
      * it is responsable for making the requests and change the state accordingly
-     * @param event 
-     * @param SearchString 
-     * @param props 
+     * @param event
+     * @param SearchString
+     * @param props
      */
     function handleSubmitForm(event: any, SearchString: string, props: any) {
         // this is necessary to avoid the page from reloading
@@ -44,7 +44,7 @@ const App: React.FC = () => {
                 .then(function(data) {
                     setRequestResponse({ profile: data[0], repo: data[1] })
                     // here i check if the response arrived but with no data
-                    setUserFound(data[0].message != 'Not Found')
+                    setUserFound(data[0].message !== 'Not Found')
                     // deactivate loader
                     setUseLoader(false)
                 })
@@ -59,14 +59,12 @@ const App: React.FC = () => {
      * this function tests if the the result page should render the loader, the results or the not found message
      */
     function getResultOutput() {
-        {
-            if (UseLoader) {
-                return <Loader />
-            } else if (UserFound) {
-                return <Result profile={RequestResponse.profile} repo={RequestResponse.repo} />
-            } else {
-                return <NotFound />
-            }
+        if (UseLoader) {
+            return <Loader />
+        } else if (UserFound) {
+            return <Result profile={RequestResponse.profile} repo={RequestResponse.repo} />
+        } else {
+            return <NotFound />
         }
     }
 
