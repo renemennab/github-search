@@ -29,7 +29,7 @@ const App: React.FC = () => {
                 })
                 .then(function(data) {
                     setRequestResponse({ profile: data[0], repo: data[1] })
-                    setUserFound(true)
+                    setUserFound(data[0].message != 'Not Found')
                 })
         } catch (err) {
             console.error(err)
