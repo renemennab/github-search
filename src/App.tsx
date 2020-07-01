@@ -71,7 +71,11 @@ const App: React.FC = () => {
     return (
         <BrowserRouter>
             <Switch>
-                <Route path="/" exact render={(props: any) => <Search {...props} submitHandler={handleSubmitForm} />} />
+                <Route
+                    path="/github-search"
+                    exact
+                    render={(props: any) => <Search {...props} submitHandler={handleSubmitForm} />}
+                />
                 <Route
                     path="/result"
                     render={(props: any) => {

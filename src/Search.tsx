@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import SearchIcon from './icons/Search-Icon'
-import { colors } from './constants'
 
 export default function Search(props: any) {
     const [SearchString, setSearchString] = useState('')
